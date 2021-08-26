@@ -1,0 +1,6 @@
+<form *ngIf="formAdd" [formGroup]="formAdd" (ngSubmit)="addProduct()">
+  <input type="text" formControlName="name" placeholder="name">
+  <input type="number" formControlName="price" placeholder="price">
+  <input type="text" formControlName="description" placeholder="description">
+  <button>Add</button>
+</form>

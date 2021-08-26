@@ -1,0 +1,6 @@
+<form *ngIf="formEdit" [formGroup]="formEdit" (ngSubmit)="submit()">
+  <input type="text" placeholder="name" formControlName="name">
+  <input type="number" placeholder="price" formControlName="price">
+  <input type="text" placeholder="description" formControlName="description">
+  <button>Update</button>
+</form>

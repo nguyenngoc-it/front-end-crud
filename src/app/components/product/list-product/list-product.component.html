@@ -1,0 +1,30 @@
+<form>
+  <input type="text" >
+</form>
+<a routerLink="add"></a>
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Price</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{product.name}}</td>
+    <td><img [src]="product.image" alt=""></td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+    <button (click)="delete(product.id)">Delete</button>
+    <button routerLink="/{{product.id}}/update">Edit</button>
+
+
+  </tr>
+  </tbody>
+</table>
+
+
