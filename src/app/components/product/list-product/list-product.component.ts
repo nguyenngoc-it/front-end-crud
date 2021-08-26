@@ -10,10 +10,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit {
-
+  productFind:any;
   product: any;
   products: any;
-  formSearch: FormGroup | undefined;
   constructor(private productService: ProductService,
               private active: ActivatedRoute,
               private form: FormBuilder) {
@@ -21,27 +20,38 @@ export class ListProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.showProduct();
+
+
   }
 
   showProduct() {
     this.productService.getAll().subscribe(res => {
       this.products = res
-
+      this.productFind=this.products;
+      // console.log(this.productFind)
     });
-
   }
 
   delete(id: any) {
-
     this.productService.delete(id).subscribe(res => {
       this.showProduct();
     })
   }
 
-  search(){
-  let keyword= this.formSearch?.value;
-    console.log(keyword)
+  findProduct(keywork:any){
+    // @ts-ignore
+    return this.products.filter(pro => {
+      // @ts-ignore
+      return pro.name.toLowerCase().indexOf(keywork) !=-1;
+    });
   }
+  search(event: any){
+  let keyword= event.toLowerCase();
+    return this.productFind= (keyword) ? this.findProduct(keyword) : this.products;
+
+
+  }
+
 
 
 }

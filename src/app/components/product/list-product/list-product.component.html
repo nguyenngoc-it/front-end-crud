@@ -1,7 +1,5 @@
-<form>
-  <input type="text" >
-</form>
-<a routerLink="add"></a>
+<input #element type="text" (input)="search(element.value)">
+<a routerLink="/add">add</a>
 <table>
   <thead>
   <tr>
@@ -13,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of products; let i=index">
+  <tr *ngFor="let product of productFind; let i=index">
     <td>{{i+1}}</td>
     <td>{{product.name}}</td>
     <td><img [src]="product.image" alt=""></td>
